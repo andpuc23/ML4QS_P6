@@ -21,7 +21,7 @@ for file in files:
     RESULT_PATH.mkdir(exist_ok=True, parents=True)
 
     # Target granularity in milliseconds
-    GRANULARITY = 250
+    GRANULARITY = 100
 
     # Read the dataset
     df = pd.read_csv(DATASET_PATH)

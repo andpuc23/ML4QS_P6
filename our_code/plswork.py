@@ -3,12 +3,15 @@ import numpy as np
 from datetime import timedelta
 import matplotlib.pyplot as plt
 from pathlib import Path
-from util.VisualizeDataset import VisualizeDataset
+# from util.VisualizeDataset import VisualizeDataset
+
 
 # Define paths
-DATASET_PATH = Path('datasets/our_stuff/demo/merged.csv')
+# This code only does one dataset at a time. will fix soonish
+file = "cycling 2024-06-07 12-40-37"
+DATASET_PATH = f'our_code/data/{file}/merged.csv'
 RESULT_PATH = Path('./intermediate_datafiles/')
-RESULT_FNAME = 'our_chapter2_result.csv'
+RESULT_FNAME = f'summary_{file}.csv'
 
 # Ensure the result directory exists
 RESULT_PATH.mkdir(exist_ok=True, parents=True)
@@ -56,7 +59,7 @@ add_numerical_data(df, 'Time (s)_mag', ['Magnetic field x (µT)', 'Magnetic fiel
 add_numerical_data(df, 'Time (s)_lin_acc', ['Linear Acceleration x (m/s^2)', 'Linear Acceleration y (m/s^2)', 'Linear Acceleration z (m/s^2)'], 'lin_acc_')
 
 # Add proximity data
-add_numerical_data(df, 'Time (s)_prox', ['Distance (cm)'], 'prox_')
+# add_numerical_data(df, 'Time (s)_prox', ['Distance (cm)'], 'prox_')
 
 # Plotting functions
 def plot_dataset_boxplot(data_table, columns):
@@ -76,13 +79,13 @@ def plot_dataset(data_table, columns, styles, plot_types):
 # plot_dataset_boxplot(data_table, ['acc_Acceleration x (m/s^2)', 'acc_Acceleration y (m/s^2)', 'acc_Acceleration z (m/s^2)'])
 # plot_dataset(data_table, ['acc_Acceleration x (m/s^2)', 'gyr_Gyroscope x (rad/s)', 'mag_Magnetic field x (µT)', 'lin_acc_Linear Acceleration x (m/s^2)', 'prox_Distance (cm)'], ['-', '-', '-', '-', 'o'], ['line', 'line', 'line', 'line', 'points'])
 
-DataViz = VisualizeDataset(__file__)
+# DataViz = VisualizeDataset(__file__)
 
-# Boxplot
-DataViz.plot_dataset_boxplot(data_table, ['acc_Acceleration x (m/s^2)', 'gyr_Gyroscope x (rad/s)', 'mag_Magnetic field x (µT)', 'lin_acc_Linear Acceleration x (m/s^2)', 'prox_Distance (cm)'])
+# # Boxplot
+# DataViz.plot_dataset_boxplot(data_table, ['acc_Acceleration x (m/s^2)', 'gyr_Gyroscope x (rad/s)', 'mag_Magnetic field x (µT)', 'lin_acc_Linear Acceleration x (m/s^2)', 'prox_Distance (cm)'])
 
-# Plot all data
-DataViz.plot_dataset(data_table, ['acc_', 'gyr_', 'mag_', 'lin_acc_', 'prox_'], ['like', 'like', 'like', 'like', 'like'], ['line', 'line', 'line', 'line', 'points'])
+# # Plot all data
+# DataViz.plot_dataset(data_table, ['acc_', 'gyr_', 'mag_', 'lin_acc_', 'prox_'], ['like', 'like', 'like', 'like', 'like'], ['line', 'line', 'line', 'line', 'points'])
 
 # Save the resulting dataframe
 data_table.to_csv(RESULT_PATH / RESULT_FNAME)

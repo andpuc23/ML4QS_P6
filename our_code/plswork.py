@@ -65,19 +65,19 @@ for file in files:
     # Add proximity data
     # add_numerical_data(df, 'Time (s)_prox', ['Distance (cm)'], 'prox_')
 
-    # Plotting functions
-    def plot_dataset_boxplot(data_table, columns):
-        data_table[columns].plot(kind='box', subplots=True, layout=(len(columns)//3, 3), figsize=(15, 10))
-        plt.show()
+    # # Plotting functions
+    # def plot_dataset_boxplot(data_table, columns):
+    #     data_table[columns].plot(kind='box', subplots=True, layout=(len(columns)//3, 3), figsize=(15, 10))
+    #     plt.show()
 
-    def plot_dataset(data_table, columns, styles, plot_types):
-        fig, axes = plt.subplots(len(columns), 1, figsize=(15, 10))
-        for i, col in enumerate(columns):
-            if plot_types[i] == 'line':
-                data_table[col].plot(ax=axes[i], style=styles[i])
-            elif plot_types[i] == 'points':
-                data_table[col].plot(ax=axes[i], style=styles[i], marker='o', linestyle='')
-        plt.show()
+    # def plot_dataset(data_table, columns, styles, plot_types):
+    #     fig, axes = plt.subplots(len(columns), 1, figsize=(15, 10))
+    #     for i, col in enumerate(columns):
+    #         if plot_types[i] == 'line':
+    #             data_table[col].plot(ax=axes[i], style=styles[i])
+    #         elif plot_types[i] == 'points':
+    #             data_table[col].plot(ax=axes[i], style=styles[i], marker='o', linestyle='')
+    #     plt.show()
 
     # Plot the data
     # plot_dataset_boxplot(data_table, ['acc_Acceleration x (m/s^2)', 'acc_Acceleration y (m/s^2)', 'acc_Acceleration z (m/s^2)'])

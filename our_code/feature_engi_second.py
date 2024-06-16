@@ -86,6 +86,6 @@ combined_df = pd.concat(df_list, ignore_index=True)
 combined_df = combined_df.dropna()
 
 # Save the combined dataframe to a new CSV file
-combined_df.to_csv('combined_data.csv', index=False)
+combined_df.to_csv('our_code/combined_data.csv', index=False)
 
 print(f"Combined all the data to combined_data.csv")

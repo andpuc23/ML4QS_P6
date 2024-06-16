@@ -23,23 +23,8 @@ def low_pass_filter(data, cutoff, fs, order=5):
 cutoff_frequency = 0.1  # Adjust this value based on your data
 sampling_rate = 1  # Assuming 1 Hz sampling rate, adjust if different
 
-# Print some initial values for debugging
-print("Initial gyroscope magnitude values:", df['gyr_magnitude'].head())
-
 # Apply the low-pass filter to the magnitude data
 df['filtered_acc_magnitude'] = low_pass_filter(df['acc_magnitude'], cutoff_frequency, sampling_rate)
-df['filtered_gyr_magnitude'] = low_pass_filter(df['gyr_magnitude'], cutoff_frequency, sampling_rate)
-
-# Print some filtered values for debugging
-print("Filtered gyroscope magnitude values:", df['filtered_gyr_magnitude'].head())
-
-# Calculate the average magnitude for acceleration and gyroscope
-average_acc_magnitude = df['acc_magnitude'].mean()
-average_gyr_magnitude = df['gyr_magnitude'].mean()
-
-# Print the average magnitudes
-print("Average Acceleration Magnitude:", average_acc_magnitude)
-print("Average Gyroscope Magnitude:", average_gyr_magnitude)
 
 # Plot the original and filtered acceleration magnitude
 plt.figure(figsize=(14, 7))
@@ -54,7 +39,6 @@ plt.legend()
 # Plot the original and filtered gyroscope magnitude
 plt.subplot(2, 1, 2)
 plt.plot(df['gyr_magnitude'], label='Original Gyroscope Magnitude')
-plt.plot(df['filtered_gyr_magnitude'], label='Filtered Gyroscope Magnitude', linewidth=2)
 plt.title('Gyroscope Magnitude')
 plt.xlabel('Time')
 plt.ylabel('Magnitude (rad/s)')

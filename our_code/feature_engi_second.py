@@ -22,6 +22,9 @@ def process_and_save_csv_files(folder_path):
             file_path = os.path.join(folder_path, file_name)
             df = pd.read_csv(file_path)
 
+            # Remove the last 200 rows
+            df = df[:-100]
+
             # Calculate the magnitude of acceleration, gyroscope, linear acceleration, and magnetic field data
             df['acc_magnitude'] = np.sqrt(df['acc_Acceleration x (m/s^2)']**2 + df['acc_Acceleration y (m/s^2)']**2 + df['acc_Acceleration z (m/s^2)']**2)
             df['gyr_magnitude'] = np.sqrt(df['gyr_Gyroscope x (rad/s)']**2 + df['gyr_Gyroscope y (rad/s)']**2 + df['gyr_Gyroscope z (rad/s)']**2)
@@ -66,12 +69,11 @@ def process_and_save_csv_files(folder_path):
             # Save the resulting DataFrame to a CSV file
             output_file_name = os.path.join(output_folder, f'output_{os.path.basename(file_name)}')
             df_to_save.to_csv(output_file_name, index=False)
+
             print(f"DataFrame saved to {output_file_name}")
 
 folder_path = 'intermediate_datafiles'
 process_and_save_csv_files(folder_path)
-
-
 
 # List all CSV files in the directory
 csv_files = glob.glob('preprocessed/*.csv')

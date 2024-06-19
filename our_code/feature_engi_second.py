@@ -57,6 +57,8 @@ def process_and_save_csv_files(folder_path):
             elif 'walking' in file_name.lower():
                 df['activity'] = 'walking'
 
+            df.rename(columns={'Unnamed: 0': 'date_time'}, inplace=True)
+            
             # Drop magnetometer columns before saving the DataFrame
             df_to_save = df.drop(columns=[col for col in df.columns if 'mag_' in col])
 

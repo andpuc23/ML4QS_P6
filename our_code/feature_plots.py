@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.signal import butter, filtfilt
 
 # Load the CSV file into a DataFrame
-file_name = 'intermediate_datafiles/summary_cycling 2024-06-07 12-40-37.csv'
+file_name = 'intermediate_datafiles/summary_running 2024-06-09 12-44-51.csv'
 df = pd.read_csv(file_name)
 
 # Calculate the magnitude of acceleration, gyroscope, linear acceleration, and magnetic field data
